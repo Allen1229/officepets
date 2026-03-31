@@ -281,10 +281,10 @@ export default function App() {
   };
 
   return (
-    <div className="game-bg min-h-screen flex items-center justify-center p-4 md:p-8 select-none">
+    <div className="game-bg min-h-[100dvh] flex items-center justify-center py-6 px-4 sm:px-8 md:p-12 lg:p-16 select-none overflow-x-hidden">
 
       {/* === Device Shell === */}
-      <div className="device-shell w-full max-w-6xl rounded-3xl p-5 md:p-8 flex flex-col lg:flex-row gap-5 lg:gap-8 relative">
+      <div className="device-shell w-full max-w-6xl rounded-[2rem] p-6 sm:p-8 md:p-8 lg:p-10 flex flex-col lg:flex-row gap-5 lg:gap-8 relative shadow-2xl">
 
         {/* === Left: LCD Screen === */}
         <div className={`lcd-screen flex-1 rounded-2xl border border-white/5 flex flex-col relative min-h-[520px] lg:min-h-[560px] p-2 overflow-hidden ${currentBg === 'lightning' ? 'bg-lightning' : currentBg === 'tree' ? 'bg-tree' : currentBg === 'big_dipper' ? 'bg-dipper' : ''}`}>
@@ -514,10 +514,10 @@ export default function App() {
         </div>
 
         {/* === Right: Control Panel === */}
-        <div className="w-full lg:w-80 flex flex-col gap-4 lg:gap-5 min-h-0 p-2 lg:p-0">
+        <div className="w-full lg:w-[350px] flex flex-col gap-5 lg:gap-6 min-h-0 pl-1 lg:pl-2">
 
           {/* Stats Card */}
-          <div className="glass-panel rounded-2xl p-5 md:p-6 flex flex-col gap-5">
+          <div className="glass-panel rounded-[1.5rem] p-5 sm:p-6 lg:px-8 flex flex-col gap-6">
             <div className="flex justify-between items-center">
               <span className="text-white/40 font-bold text-base">持有金幣</span>
               <div className="coin-badge flex items-center gap-2 px-5 py-2.5 rounded-lg">
@@ -571,7 +571,7 @@ export default function App() {
           </div>
 
           {/* Gacha Rates */}
-          <div className="glass-panel flex-1 rounded-2xl p-5 md:p-6 flex flex-col min-h-0 overflow-hidden">
+          <div className="glass-panel flex-1 rounded-[1.5rem] p-5 sm:p-6 lg:px-8 flex flex-col min-h-0 overflow-hidden">
             <div className="text-center font-bold text-base text-white/50 mb-4 shrink-0 border-b border-white/5 pb-3 tracking-wider uppercase"
               style={{ fontFamily: 'var(--font-pixel)', fontSize: '11px' }}>
               抽蛋機率表
