@@ -284,10 +284,10 @@ export default function App() {
     <div className="game-bg min-h-[100dvh] flex items-center justify-center py-6 px-4 sm:px-8 md:p-12 lg:p-16 select-none overflow-x-hidden">
 
       {/* === Device Shell === */}
-      <div className="device-shell w-full max-w-6xl rounded-[2rem] p-6 sm:p-8 md:p-8 lg:p-10 flex flex-col lg:flex-row gap-5 lg:gap-8 relative shadow-2xl">
+      <div className="device-shell w-full max-w-6xl rounded-[20px] p-6 sm:p-8 md:p-8 lg:p-10 flex flex-col lg:flex-row gap-5 lg:gap-8 relative shadow-2xl">
 
         {/* === Left: LCD Screen === */}
-        <div className={`lcd-screen flex-1 rounded-2xl border border-white/5 flex flex-col relative min-h-[520px] lg:min-h-[560px] p-2 overflow-hidden ${currentBg === 'lightning' ? 'bg-lightning' : currentBg === 'tree' ? 'bg-tree' : currentBg === 'big_dipper' ? 'bg-dipper' : ''}`}>
+        <div className={`lcd-screen flex-1 rounded-xl border border-white/5 flex flex-col relative min-h-[520px] lg:min-h-[560px] p-2 overflow-hidden ${currentBg === 'lightning' ? 'bg-lightning' : currentBg === 'tree' ? 'bg-tree' : currentBg === 'big_dipper' ? 'bg-dipper' : ''}`}>
 
           {currentBg === 'big_dipper' && (
             <div className="absolute inset-0 z-0 pointer-events-none rounded-2xl">
@@ -517,7 +517,7 @@ export default function App() {
         <div className="w-full lg:w-[350px] flex flex-col gap-5 lg:gap-6 min-h-0 pl-1 lg:pl-2">
 
           {/* Stats Card */}
-          <div className="glass-panel rounded-[1.5rem] p-5 sm:p-6 lg:px-8 flex flex-col gap-6">
+          <div className="glass-panel rounded-2xl p-5 sm:p-6 lg:px-8 flex flex-col gap-6">
             <div className="flex justify-between items-center">
               <span className="text-white/40 font-bold text-base">持有金幣</span>
               <div className="coin-badge flex items-center gap-2 px-5 py-2.5 rounded-lg">
@@ -571,7 +571,7 @@ export default function App() {
           </div>
 
           {/* Gacha Rates */}
-          <div className="glass-panel flex-1 rounded-[1.5rem] p-5 sm:p-6 lg:px-8 flex flex-col min-h-0 overflow-hidden">
+          <div className="glass-panel flex-1 rounded-2xl p-5 sm:p-6 lg:px-8 flex flex-col min-h-0 overflow-hidden">
             <div className="text-center font-bold text-base text-white/50 mb-4 shrink-0 border-b border-white/5 pb-3 tracking-wider uppercase"
               style={{ fontFamily: 'var(--font-pixel)', fontSize: '11px' }}>
               抽蛋機率表
@@ -601,14 +601,14 @@ export default function App() {
             <div className="flex gap-3">
               <button
                 onClick={() => setShowBgShop(true)}
-                className="btn-primary rounded-2xl p-5 font-bold text-lg flex justify-center items-center gap-2"
+                className="btn-primary rounded-xl p-5 font-bold text-lg flex justify-center items-center gap-2"
                 title="佈景商店"
               >
                 <Gift className="w-6 h-6" />
               </button>
               <button
                 onClick={() => setShowPokedex(true)}
-                className="btn-primary flex-1 rounded-2xl p-5 font-bold text-lg flex justify-center items-center gap-2"
+                className="btn-primary flex-1 rounded-xl p-5 font-bold text-lg flex justify-center items-center gap-2"
               >
                 <BookOpen className="w-6 h-6" />
                 <span>圖鑑</span>
@@ -625,7 +625,7 @@ export default function App() {
         {showPokedex && (
           <div className="fixed inset-0 pokedex-overlay z-40 flex justify-center items-center p-4 md:p-8"
                onClick={() => setShowPokedex(false)}>
-            <div className="w-full max-w-5xl h-[95%] glass-panel rounded-3xl p-5 lg:p-8 flex flex-col border border-white/8"
+            <div className="w-full max-w-5xl h-[95%] glass-panel rounded-2xl p-5 lg:p-8 flex flex-col border border-white/8"
                  onClick={e => e.stopPropagation()}>
               <div className="flex justify-between items-center mb-5 border-b border-white/8 pb-4 shrink-0">
                 <h3 className="font-bold text-xl lg:text-2xl flex items-center gap-3 text-white/90">
@@ -740,7 +740,7 @@ export default function App() {
         {selectedDexPet && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pokedex-overlay"
                onClick={() => setSelectedDexPet(null)}>
-            <div className="glass-panel rounded-3xl p-8 flex flex-col items-center border border-white/10 shadow-2xl relative min-w-[300px]"
+            <div className="glass-panel rounded-2xl p-8 flex flex-col items-center border border-white/10 shadow-2xl relative min-w-[300px]"
                  onClick={e => e.stopPropagation()}>
                <button onClick={() => setSelectedDexPet(null)}
                  className="absolute top-4 right-4 p-2 hover:bg-white/5 rounded-full text-white/50 hover:text-white/80 text-xl w-10 h-10 flex items-center justify-center transition-colors z-10">
@@ -765,7 +765,7 @@ export default function App() {
         {showBgShop && (
           <div className="fixed inset-0 pokedex-overlay z-40 flex justify-center items-center p-4 md:p-8"
                onClick={() => setShowBgShop(false)}>
-            <div className="w-full max-w-lg glass-panel rounded-3xl p-5 md:p-8 flex flex-col border border-white/8 relative max-h-[90vh]"
+            <div className="w-full max-w-lg glass-panel rounded-2xl p-5 md:p-8 flex flex-col border border-white/8 relative max-h-[90vh]"
                  onClick={e => e.stopPropagation()}>
               <div className="flex justify-between items-center mb-5 border-b border-white/8 pb-4 shrink-0">
                 <h3 className="font-bold text-xl flex items-center gap-3 text-white/90">
@@ -869,7 +869,7 @@ export default function App() {
         {showCoinInfo && (
           <div className="fixed inset-0 pokedex-overlay z-50 flex justify-center items-center p-4 md:p-8"
                onClick={() => setShowCoinInfo(false)}>
-            <div className="w-full max-w-lg glass-panel rounded-3xl p-5 md:p-8 flex flex-col border border-white/8 relative"
+            <div className="w-full max-w-lg glass-panel rounded-2xl p-5 md:p-8 flex flex-col border border-white/8 relative"
                  onClick={e => e.stopPropagation()}>
               <div className="flex justify-between items-center mb-5 border-b border-white/8 pb-4">
                 <h3 className="font-bold text-xl flex items-center gap-3 text-white/90">
@@ -932,7 +932,7 @@ export default function App() {
         {showFactionProb && (
           <div className="fixed inset-0 pokedex-overlay z-50 flex justify-center items-center p-4 md:p-8"
                onClick={() => setShowFactionProb(false)}>
-            <div className="w-full max-w-sm glass-panel rounded-3xl p-5 md:p-8 flex flex-col border border-white/8 relative"
+            <div className="w-full max-w-sm glass-panel rounded-2xl p-5 md:p-8 flex flex-col border border-white/8 relative"
                  onClick={e => e.stopPropagation()}>
               <div className="flex justify-between items-center mb-5 border-b border-white/8 pb-4">
                 <h3 className="font-bold text-xl flex items-center gap-3 text-white/90">
