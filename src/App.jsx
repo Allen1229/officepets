@@ -113,7 +113,7 @@ export default function App() {
       if (isFocused) setFocusTime(prev => prev + 1);
 
       if (pet) {
-        const isFocusedBonus = focusTime > 5 ? 150.0 : 1.0;
+        const isFocusedBonus = focusTime > 5 ? 50.0 : 1.0;
         const tickSpeed = 1;
         const stageMultiplier = pet.stage.id === 'stage4' && pet.adultForm
           ? (pet.adultForm.incomeMultiplier || 1.0) : 1.0;
@@ -540,7 +540,7 @@ export default function App() {
                   : 'bg-white/5 text-white/30 border border-white/10'
               }`}>
                 <Zap className={`w-5 h-5 ${isFocusedBonusActive ? 'animate-pulse' : ''}`} />
-                <span>{isFocusedBonusActive ? '150x 試玩版' : '未加成'}</span>
+                <span>{isFocusedBonusActive ? '50x 試玩版' : '未加成'}</span>
               </div>
             </div>
 
@@ -891,7 +891,7 @@ export default function App() {
                 <div className="bg-white/5 p-4 rounded-xl border border-white/5">
                   <p className="font-bold text-emerald-400 mb-2">計算公式</p>
                   <div className="font-mono text-sm break-all leading-relaxed opacity-90 p-3 bg-black/30 rounded-lg whitespace-pre-wrap">
-                    基礎產量(1) × 稀有度加成 × 專注加成(150x) × 心情加成 × 成年專屬加成
+                    基礎產量(1) × 稀有度加成 × 專注加成(50x) × 心情加成 × 成年專屬加成
                   </div>
                 </div>
 
@@ -900,7 +900,7 @@ export default function App() {
                   <ul className="space-y-3 text-sm">
                     <li className="flex justify-between items-start">
                       <span className="text-white/60">專注加成</span>
-                      <span className="font-bold text-emerald-400 text-right">進入畫面 5 秒後可獲得 150x</span>
+                      <span className="font-bold text-emerald-400 text-right">進入畫面 5 秒後可獲得 50x</span>
                     </li>
                     <li className="flex justify-between items-start border-t border-white/5 pt-3">
                       <span className="text-white/60">心情加成</span>
