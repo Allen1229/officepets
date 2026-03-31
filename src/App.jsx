@@ -623,7 +623,7 @@ export default function App() {
 
         {/* === Pokedex Modal === */}
         {showPokedex && (
-          <div className="absolute inset-0 pokedex-overlay z-40 flex justify-center items-center p-4 md:p-8 rounded-3xl"
+          <div className="fixed inset-0 pokedex-overlay z-40 flex justify-center items-center p-4 md:p-8"
                onClick={() => setShowPokedex(false)}>
             <div className="w-full max-w-5xl h-[95%] glass-panel rounded-3xl p-5 lg:p-8 flex flex-col border border-white/8"
                  onClick={e => e.stopPropagation()}>
@@ -738,7 +738,7 @@ export default function App() {
 
         {/* === Pokedex Details Modal === */}
         {selectedDexPet && (
-          <div className="absolute inset-0 z-50 flex items-center justify-center p-4 pokedex-overlay"
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pokedex-overlay"
                onClick={() => setSelectedDexPet(null)}>
             <div className="glass-panel rounded-3xl p-8 flex flex-col items-center border border-white/10 shadow-2xl relative min-w-[300px]"
                  onClick={e => e.stopPropagation()}>
@@ -763,7 +763,7 @@ export default function App() {
 
         {/* === Background Shop Modal === */}
         {showBgShop && (
-          <div className="absolute inset-0 pokedex-overlay z-40 flex justify-center items-center p-4 md:p-8 rounded-3xl"
+          <div className="fixed inset-0 pokedex-overlay z-40 flex justify-center items-center p-4 md:p-8"
                onClick={() => setShowBgShop(false)}>
             <div className="w-full max-w-lg glass-panel rounded-3xl p-5 md:p-8 flex flex-col border border-white/8 relative max-h-[90vh]"
                  onClick={e => e.stopPropagation()}>
@@ -867,7 +867,7 @@ export default function App() {
 
         {/* === Coin Info Modal === */}
         {showCoinInfo && (
-          <div className="absolute inset-0 pokedex-overlay z-50 flex justify-center items-center p-4 md:p-8 rounded-3xl"
+          <div className="fixed inset-0 pokedex-overlay z-50 flex justify-center items-center p-4 md:p-8"
                onClick={() => setShowCoinInfo(false)}>
             <div className="w-full max-w-lg glass-panel rounded-3xl p-5 md:p-8 flex flex-col border border-white/8 relative"
                  onClick={e => e.stopPropagation()}>
@@ -930,7 +930,7 @@ export default function App() {
         )}
         {/* === Faction Probabilities Modal === */}
         {showFactionProb && (
-          <div className="absolute inset-0 pokedex-overlay z-50 flex justify-center items-center p-4 md:p-8 rounded-3xl"
+          <div className="fixed inset-0 pokedex-overlay z-50 flex justify-center items-center p-4 md:p-8"
                onClick={() => setShowFactionProb(false)}>
             <div className="w-full max-w-sm glass-panel rounded-3xl p-5 md:p-8 flex flex-col border border-white/8 relative"
                  onClick={e => e.stopPropagation()}>
