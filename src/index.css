@@ -1,0 +1,498 @@
+@import "tailwindcss";
+
+/* === Design Tokens === */
+@theme {
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-body: 'Noto Sans TC', sans-serif;
+
+  --color-shell-dark: #0f0f1a;
+  --color-shell: #1a1a2e;
+  --color-shell-light: #2a2a4a;
+  --color-shell-border: #3a3a5c;
+  --color-lcd-bg: #0d1b2a;
+  --color-lcd-light: #162d44;
+  --color-panel: #141428;
+  --color-panel-border: #2a2a4e;
+
+  --color-rarity-common: #8a8a8a;
+  --color-rarity-uncommon: #5cb85c;
+  --color-rarity-rare: #4a9eff;
+  --color-rarity-epic: #b366ff;
+  --color-rarity-legendary: #ffb347;
+  --color-rarity-mythic: #ff6b9d;
+  --color-rarity-secret: #00e5ff;
+
+  --color-gold: #ffd700;
+  --color-gold-dark: #b8860b;
+}
+
+/* === Global Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-shell-dark);
+  color: #e0e0e0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* === Main Background Particles === */
+.game-bg {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(74, 158, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(179, 102, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(255, 107, 157, 0.03) 0%, transparent 50%),
+    var(--color-shell-dark);
+}
+
+/* === Device Shell === */
+.device-shell {
+  background: linear-gradient(145deg, #1e1e38, #14142a);
+  border: 3px solid var(--color-shell-border);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.03) inset,
+    0 20px 60px rgba(0,0,0,0.6),
+    0 0 80px rgba(74,158,255,0.05);
+}
+
+/* === LCD Screen === */
+.lcd-screen {
+  background: linear-gradient(180deg, #0a1628, #0d1f35, #0a1628);
+  position: relative;
+  overflow: hidden;
+}
+
+/* === Shop Backgrounds === */
+.bg-lightning {
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(138,43,226,0.3) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, transparent 2px, transparent 10px);
+  animation: lightning-flash 7s infinite;
+}
+
+@keyframes lightning-flash {
+  0%, 95%, 98%, 100% { background-color: transparent; }
+  96% { background-color: rgba(255, 255, 255, 0.2); }
+  97% { background-color: rgba(138, 43, 226, 0.1); }
+  99% { background-color: rgba(255, 255, 255, 0.3); }
+}
+
+.bg-tree {
+  background: 
+    radial-gradient(ellipse at 50% 100%, rgba(46, 204, 113, 0.25) 0%, transparent 70%),
+    radial-gradient(circle at 20% 80%, rgba(39, 174, 96, 0.2) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(8, 20, 15, 0.8), rgba(20, 45, 25, 0.9));
+}
+
+.bg-dipper {
+  background: #050b14;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes dipper-star-appear {
+  0% { opacity: 0; transform: scale(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes draw-dipper-lines {
+  0%, 20% { stroke-dashoffset: 1000; }
+  80%, 100% { stroke-dashoffset: 0; }
+}
+
+@keyframes dipper-line-appear {
+  0%, 10% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes swing-accessory {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+
+@keyframes rainbow-text {
+  0% { color: #ff5252; }
+  14% { color: #ffab40; }
+  28% { color: #eeff41; }
+  42% { color: #5cb85c; }
+  57% { color: #4a9eff; }
+  71% { color: #b366ff; }
+  85% { color: #e040fb; }
+  100% { color: #ff5252; }
+}
+
+.text-rainbow {
+  animation: rainbow-text 3s linear infinite;
+}
+
+.lcd-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.012) 0px,
+    rgba(255, 255, 255, 0.012) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.lcd-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* === Ground / Floor === */
+.lcd-ground {
+  background: linear-gradient(0deg,
+    rgba(20, 40, 30, 0.6) 0%,
+    rgba(15, 30, 25, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+/* === Panel Glass Effect === */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(26, 26, 50, 0.95), rgba(20, 20, 40, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+}
+
+.status-badge {
+  background: linear-gradient(135deg, rgba(15, 20, 35, 0.95), rgba(10, 15, 28, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* === Buttons === */
+.btn-primary {
+  background: linear-gradient(135deg, #2a2a5a, #1e1e44);
+  border: 2px solid rgba(255,255,255,0.1);
+  color: #e0e0e0;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 0 #0a0a1a, 0 6px 12px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3a3a6a, #2e2e54);
+  border-color: rgba(255,255,255,0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #0a0a1a, 0 8px 16px rgba(0,0,0,0.4);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #0a0a1a;
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-item {
+  background: linear-gradient(135deg, rgba(30, 30, 55, 0.9), rgba(20, 20, 40, 0.95));
+  border: 2px solid rgba(255,255,255,0.08);
+  color: #c0c0c0;
+  transition: all 0.15s ease;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+.btn-item:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(40, 40, 70, 0.9), rgba(30, 30, 55, 0.95));
+  border-color: rgba(255,255,255,0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.4);
+}
+
+.btn-item:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.4);
+}
+
+.btn-item:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* === Rarity Glow Rings === */
+.rarity-glow-common    { filter: drop-shadow(0 0 6px rgba(138,138,138,0.3)); }
+.rarity-glow-uncommon  { filter: drop-shadow(0 0 8px rgba(92,184,92,0.4)); }
+.rarity-glow-rare      { filter: drop-shadow(0 0 10px rgba(74,158,255,0.5)); }
+.rarity-glow-epic      { filter: drop-shadow(0 0 12px rgba(179,102,255,0.5)); }
+.rarity-glow-legendary { filter: drop-shadow(0 0 14px rgba(255,179,71,0.6)); }
+.rarity-glow-mythic    { filter: drop-shadow(0 0 16px rgba(255,107,157,0.6)); }
+.rarity-glow-secret    { filter: drop-shadow(0 0 18px rgba(0,229,255,0.7)); }
+
+/* === Animations === */
+@keyframes egg-shake {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(-8deg); }
+  20% { transform: rotate(8deg); }
+  30% { transform: rotate(-8deg); }
+  40% { transform: rotate(8deg); }
+  50%, 100% { transform: rotate(0deg); }
+}
+.anim-egg-shake {
+  animation: egg-shake 2.5s infinite ease-in-out;
+  transform-origin: bottom center;
+}
+
+@keyframes baby-jump {
+  0%, 80%, 100% { transform: translateY(0); }
+  90% { transform: translateY(-20px); }
+}
+.anim-baby-jump { animation: baby-jump 2s infinite ease-in-out; }
+
+@keyframes youth-walk {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-25px); }
+  75% { transform: translateX(25px); }
+}
+.anim-youth-walk { animation: youth-walk 4s infinite ease-in-out; }
+
+/* === Rarity-Specific Adult Animations === */
+
+/* Common: gentle short walk */
+@keyframes adult-walk-common {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-30px, -10px); }
+  50% { transform: translate(0, 8px); }
+  75% { transform: translate(30px, -10px); }
+}
+.anim-adult-common { animation: adult-walk-common 5s infinite ease-in-out; }
+
+/* Uncommon: slightly longer walk */
+@keyframes adult-walk-uncommon {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-50px, -18px); }
+  50% { transform: translate(0, 12px); }
+  75% { transform: translate(50px, -18px); }
+}
+.anim-adult-uncommon { animation: adult-walk-uncommon 4.5s infinite ease-in-out; }
+
+/* Rare: even longer walk */
+@keyframes adult-walk-rare {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-75px, -25px); }
+  50% { transform: translate(0, 15px); }
+  75% { transform: translate(75px, -25px); }
+}
+.anim-adult-rare { animation: adult-walk-rare 4s infinite ease-in-out; }
+
+/* Epic: flip rotation */
+@keyframes adult-flip-epic {
+  0% { transform: translate(0, 0) rotateY(0deg); }
+  15% { transform: translate(-40px, -15px) rotateY(0deg); }
+  30% { transform: translate(0, 0) rotateY(180deg); }
+  45% { transform: translate(40px, -15px) rotateY(180deg); }
+  60% { transform: translate(0, 0) rotateY(360deg); }
+  100% { transform: translate(0, 0) rotateY(360deg); }
+}
+.anim-adult-epic { animation: adult-flip-epic 4s infinite ease-in-out; }
+
+/* Legendary: sparkle blink */
+@keyframes adult-blink-legendary {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
+  20% { transform: translate(-35px, -12px) scale(1); opacity: 1; }
+  28% { transform: translate(-35px, -12px) scale(1.15); opacity: 0.3; }
+  32% { transform: translate(-35px, -12px) scale(1); opacity: 1; }
+  50% { transform: translate(0, 0) scale(1); opacity: 1; }
+  70% { transform: translate(35px, -12px) scale(1); opacity: 1; }
+  78% { transform: translate(35px, -12px) scale(1.15); opacity: 0.3; }
+  82% { transform: translate(35px, -12px) scale(1); opacity: 1; }
+}
+.anim-adult-legendary { animation: adult-blink-legendary 3.5s infinite ease-in-out; }
+
+/* Mythic: teleport jump */
+@keyframes adult-teleport-mythic {
+  0%, 15% { transform: translate(0, 0) scale(1); opacity: 1; }
+  18% { transform: translate(0, 0) scale(0.3); opacity: 0; }
+  22% { transform: translate(-80px, -30px) scale(0.3); opacity: 0; }
+  25% { transform: translate(-80px, -30px) scale(1); opacity: 1; }
+  40%, 55% { transform: translate(-80px, -30px) scale(1); opacity: 1; }
+  58% { transform: translate(-80px, -30px) scale(0.3); opacity: 0; }
+  62% { transform: translate(80px, -20px) scale(0.3); opacity: 0; }
+  65% { transform: translate(80px, -20px) scale(1); opacity: 1; }
+  80%, 95% { transform: translate(80px, -20px) scale(1); opacity: 1; }
+  98% { transform: translate(80px, -20px) scale(0.3); opacity: 0; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+.anim-adult-mythic { animation: adult-teleport-mythic 5s infinite ease-in-out; }
+
+/* Secret: chaotic combo of flip + blink + teleport */
+@keyframes adult-chaos-secret {
+  0% { transform: translate(0, 0) rotateY(0deg) scale(1); opacity: 1; }
+  8% { transform: translate(0, 0) rotateY(0deg) scale(0.2); opacity: 0; }
+  12% { transform: translate(-90px, -25px) rotateY(0deg) scale(0.2); opacity: 0; }
+  15% { transform: translate(-90px, -25px) rotateY(0deg) scale(1); opacity: 1; }
+  25% { transform: translate(-90px, -25px) rotateY(180deg) scale(1); opacity: 1; }
+  30% { transform: translate(-90px, -25px) rotateY(180deg) scale(1.2); opacity: 0.2; }
+  33% { transform: translate(-90px, -25px) rotateY(180deg) scale(1); opacity: 1; }
+  40% { transform: translate(-90px, -25px) rotateY(360deg) scale(0.2); opacity: 0; }
+  44% { transform: translate(70px, 15px) rotateY(360deg) scale(0.2); opacity: 0; }
+  48% { transform: translate(70px, 15px) rotateY(360deg) scale(1); opacity: 1; }
+  55% { transform: translate(70px, 15px) rotateY(540deg) scale(1); opacity: 1; }
+  58% { transform: translate(70px, 15px) rotateY(540deg) scale(1.2); opacity: 0.2; }
+  62% { transform: translate(70px, 15px) rotateY(540deg) scale(1); opacity: 1; }
+  70% { transform: translate(70px, 15px) rotateY(720deg) scale(0.2); opacity: 0; }
+  74% { transform: translate(0, 0) rotateY(720deg) scale(0.2); opacity: 0; }
+  78%, 100% { transform: translate(0, 0) rotateY(720deg) scale(1); opacity: 1; }
+}
+.anim-adult-secret { animation: adult-chaos-secret 6s infinite ease-in-out; }
+
+@keyframes float-up {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-50px); }
+}
+.anim-float-up { animation: float-up 1s ease-out forwards; }
+
+@keyframes gacha-spin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.15); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+.anim-gacha-spin { animation: gacha-spin 1s ease-in-out; }
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.anim-pulse-glow { animation: pulse-glow 2s infinite ease-in-out; }
+
+@keyframes rarity-reveal {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.anim-rarity-reveal { animation: rarity-reveal 0.6s ease-out; }
+
+@keyframes speech-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+.anim-speech { animation: speech-bounce 3s infinite ease-in-out; }
+
+@keyframes secret-rainbow {
+  0% { color: #ff6b6b; }
+  16% { color: #ffa726; }
+  33% { color: #ffee58; }
+  50% { color: #66bb6a; }
+  66% { color: #42a5f5; }
+  83% { color: #ab47bc; }
+  100% { color: #ff6b6b; }
+}
+.anim-rainbow { animation: secret-rainbow 2s linear infinite; }
+
+/* === Scrollbar === */
+.custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 8px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* === Pokedex Modal === */
+.pokedex-overlay {
+  background: rgba(5, 5, 15, 0.9);
+  backdrop-filter: blur(8px);
+}
+
+.pokedex-card {
+  background: linear-gradient(135deg, rgba(25, 25, 50, 0.95), rgba(15, 15, 30, 0.98));
+  border: 2px solid rgba(255,255,255,0.06);
+  transition: all 0.2s ease;
+}
+
+.pokedex-card:hover {
+  border-color: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.pokedex-card.locked {
+  background: rgba(15, 15, 30, 0.6);
+  border: 2px dashed rgba(255,255,255,0.08);
+}
+
+/* === Speech Bubble === */
+.speech-bubble {
+  background: rgba(15, 25, 40, 0.92);
+  border: 2px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  position: relative;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 20px;
+  width: 12px;
+  height: 12px;
+  background: rgba(15, 25, 40, 0.92);
+  border-right: 2px solid rgba(255,255,255,0.1);
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+  transform: rotate(45deg);
+}
+
+/* === Progress Bar === */
+.progress-track {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.progress-fill {
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2));
+}
+
+/* === Coin Badge === */
+.coin-badge {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(184, 134, 11, 0.08));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+/* === Probability Table Row === */
+.prob-row {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.15s ease;
+}
+
+.prob-row:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* === Section Dividers === */
+.section-badge {
+  background: linear-gradient(135deg, rgba(74, 158, 255, 0.15), rgba(74, 158, 255, 0.05));
+  border: 1px solid rgba(74, 158, 255, 0.2);
+}
